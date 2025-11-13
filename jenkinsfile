@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('List files (Windows)') {
+      steps {
+        // uses Windows command to list files
+        bat 'dir /b'
+      }
+    }
+
+    stage('Done') {
+      steps {
+        echo 'Jenkinsfile test complete. If you want to publish to GitHub Pages, tell me and I will add publish steps.'
+      }
+    }
+  }
+}
